@@ -23,12 +23,27 @@ class App extends Component {
 		this.setState({ groceries: [grocery, ...groceries] });
 	}
 
+	handleClick = (id) => {
+		const { groceries } = this.state;
+		this.setState({
+			groceries: groceries.map( grocery => {
+				if (grocery.id === id) {
+					return {
+						...grocery,
+						bought: !grocery.bought
+					}
+				}
+				return grocery
+			})
+		})
+	}
+
   render() {
 		const { groceries } = this.state;
 
     return (
 			<div>
-				<List name="Grocery List" items={groceries} />
+				<List name="Grocery List" items={groceries} groceryClick={this.handleClick} />
 				<GroceryForm addItem={this.addItem} />
 			</div>
     );
