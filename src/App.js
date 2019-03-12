@@ -11,10 +11,10 @@ class App extends Component {
 		]
 	}
 
-	getID = () => {
+	getId = () => {
 		return Math.floor((1 + Math.random()) * 0x10000)
 			.toString(16)
-			.subString(1);
+			.substring(1);
 	}
 
 	addItem = (name) => {
